@@ -1,6 +1,6 @@
 var matrix = [];
 var side = 15;
-var size2 = 50; // Reduced size due to lag
+var size2 = 40; // Reduced size due to lag
 var emptyCells = [];
 var timer = 0;
 
@@ -54,10 +54,8 @@ function draw(){
 
 
 
-
-
-
-class Grass {
+// Parent Class
+class Item {
     constructor(x,y){
         this.x = x;
         this.y = y;
@@ -72,6 +70,11 @@ class Grass {
             [this.x + 1, this.y + 1]  
         ];
     }
+}
+
+
+// Grass
+class Grass extends Item{
     chooseCells(){
         var found = [];
         for (var i in this.directions) {
@@ -88,20 +91,21 @@ class Grass {
     }
 }
 
-class GrassEater {
+
+// GrassEater
+class GrassEater extends Item{
     constructor(x,y,energy){
-        this.x = x;
-        this.y = y;
+        super(x, y)
         this.energy = energy;
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x    , this.y - 1],
             [this.x + 1, this.y - 1],
             [this.x - 1, this.y    ],
-            [this.x + 1, this.y    ],
+            [this.x + 1, this.y    ],     
             [this.x - 1, this.y + 1],
-            [this.x    , this.y + 1],
-            [this.x + 1, this.y + 1]
+            [this.x    , this.y + 1],     
+            [this.x + 1, this.y + 1]  
         ];
     }
     chooseCells(){
@@ -162,9 +166,73 @@ class GrassEater {
     }
 }
 
-class Empty {
-    constructor(x,y){
-        this.x = x;
-        this.y = y;
-    }
-}
+
+// Empty
+class Empty extends Item{}
+
+
+
+
+
+
+
+// var data = {
+//     "key": "value",
+//     "first_name": "Fabian",
+//     "last_name": "Harizi",
+//     "age": 16,
+//     "tumo_student": true,
+//     "favorite_sports": [
+//         {
+//             "name": "football",
+//             "position": "defender"
+//         },
+//         {
+//             "name": "basketball",
+//             "position": "centerBack"
+//         }
+//     ],
+    
+//     sayHello() {
+//         console.log("Hello")
+//     }
+// }
+
+
+// // console.log(data.first_name)
+// // console.log(data.last_name)
+// // console.log(data.age)
+// // console.log(data.tumo_student)
+// // console.log(data.favorite_sports)
+// // data.sayHello()
+
+
+
+
+
+
+// class User {
+//     constructor(firstName, lastName, age, job){
+//         this.firstName = firstName;
+//         this.lastName = lastName;
+//         this.age = age;
+//         this.job = job;
+//     }
+
+//     userInfo() {
+//         console.log("My name is " + this.firstName + " " + this.lastName + ". I am "+ this.age +" years old and I am a "+ this.job)
+//     }
+
+//     changeJob(x) {
+//         this.job = x;
+//     } 
+// }
+
+
+// var firstUser = new User("Fabian", "Harizi", 16, "student")
+// console.log(firstUser)
+// firstUser.userInfo()
+
+// var secondUser = new User("Fab", "Dumdumi", 15, "miniator")
+// console.log(secondUser)
+// secondUser.userInfo()
