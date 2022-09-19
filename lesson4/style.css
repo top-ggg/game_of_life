@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, Helvetica, sans-serif!important;
+}
+
+#Chat {
+    width: 90%;
+    margin: 0 5%;
+    background-color: #FAFAFA;
+    border: 1px solid #acacac;
+    padding: 1em;   
+}
+
+#chat-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+#chat-input{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    height: 75px;
+    gap: 0px;
+}
+
+#chat-content{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+}
+
+#Nachricht {
+    flex-basis: 100%;
+    margin: auto;
+    font-size: 1.25em;
+    height: 70px;
+    padding: 0 20px;
+    border-radius: 100px 0 0 100px;
+}
+
+#Senden {
+    aspect-ratio: 1/1;
+    border-radius: 0;
+    background-color: #43A047;
+    color: white;
+    font-size: 1.25em;
+    border: none;
+    border-radius: 0 100px 100px 0;
+}
+
+#chat_p {
+    text-align: left;
+    display: inline;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #34495e;
+    padding: 15px 45px;
+    background-color: #00000020;
+    border-radius: 100px 100px 100px 0;
+}
+
+.chat_p {
+    text-align: left;
+    display: inline;
+    max-width: 300px;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #34495e;
+    padding: 15px 45px;
+    background-color: #00000020;
+    border-radius: 0 10px 10px 0;
+    margin: 3px 0;
+}
+
+.chat_p:nth-of-type(1){
+    border-radius: 30px 30px 10px 0;
+}
+
+
+.chat_p:last-of-type{
+    border-radius: 0px 10px 30px 0;
+}
