@@ -3,7 +3,7 @@
         = Grass: Regenerates over time (every 3 frames)
         = GrassEater: Eats the Grass and multiples itself. If it's not able to eat any Grass, it dies.
 
-    > This version however, add _3 new characters_ that make this simulation even more interesting. Check them out below
+    **This version however, add _3 new characters_ that make this simulation even more interesting. Check them out below**
 ## Characters:
     = Season
         "Season" is an object that handles the season changes (spring, summer, fall, winter). Everytime 250 frames, it switches to the next season.
