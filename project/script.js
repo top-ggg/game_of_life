@@ -38,16 +38,23 @@ function setup(){
 function draw(){
     emptyCells=[];
     timer++
-    if(grassTimer == 50){
-        flowerAudio.play()
+    if(season.currentSeason == 'spring'){
+        if(grassTimer == 50){
+            flowerAudio.play()
+        }
+        if(grassTimer <= 0){
+            grassSpeed = 3
+            grassTimer = 0
+        } else {
+            grassSpeed = 1
+            grassTimer--
+        } 
+    } else if (season.currentSeason == 'fall'){
+        grassSpeed = 4
+    } else if (season.currentSeason == 'winter'){
+        grassSpeed = 5
     }
-    if(grassTimer <= 0){
-        grassSpeed = 3
-        grassTimer = 0
-    } else {
-        grassSpeed = 1
-        grassTimer--
-    }
+    
     if(grassItems == 0){
         document.getElementById('winTitle').innerHTML = '<i class="fa-solid fa-flag"></i> GrassEaters Won! <i class="fa-solid fa-flag"></i>'
         document.getElementById('scoreTitle').innerHTML = '<i class="fa-solid fa-clock"></i> Time: ' + timer
@@ -55,12 +62,13 @@ function draw(){
         noLoop()
     } 
     if(grassEaterItems == 0 && getAllCells(Lightning).length == 0 && grassItems != 0){
-        console.log('Lighning Spawned')
         var tempLightningX = getRandomInt(0,cellSize+1)
         var tempLightningY = getRandomInt(0,cellSize+1)
-        matrix[tempLightningY][tempLightningX] = new Lightning(tempLightningX, tempLightningY, GrassEater, timer)
-        lightningAudio.play()
-        matrix[tempLightningY][tempLightningX].strike()
+        if(matrix[tempLightningY][tempLightningX] instanceof Grass){
+            matrix[tempLightningY][tempLightningX] = new Lightning(tempLightningX, tempLightningY, GrassEater, timer)
+            lightningAudio.play()
+            matrix[tempLightningY][tempLightningX].strike()
+        }
     } 
 
     season.recheckSeason()
