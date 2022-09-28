@@ -3,8 +3,13 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
       <script src="classes.js"></script>
       <script src="script.js"></script>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+      <script src="https://kit.fontawesome.com/7947c33a7d.js" crossorigin="anonymous"></script>
    </head>
-   <body>
+   <body style="font-family: VT323; font-size: 120%;">
       <div id="cellCounters">
          <p id="empty"></p>
          <p id="grass"></p>
@@ -12,6 +17,11 @@
       </div><br>
       <div id="extra">
          <p id="timer"></p>
+         <p id="season"></p>
+      </div>
+      <div id="win" style="text-align: center; color: red; font-size: 200%; font-weight: bold;">
+         <h1 id="winTitle"></h1>
+         <h3 id="scoreTitle"></h3>
       </div>
    </body>
 </html>
