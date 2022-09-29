@@ -1,24 +1,38 @@
 <html>
    <head>
       <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
       <script src="https://kit.fontawesome.com/7947c33a7d.js" crossorigin="anonymous"></script>
    </head>
-   <body style="font-family: VT323; font-size: 120%;">
-      <div id="ui">
-         <button id="postBtn">Post</button>
-         <button id="stopBtn">Stop Simulation</button>
-      </div>
-      <div id="cellCounters">
-         <p id="empty"></p>
-         <p id="grass"></p>
-         <p id="grassEater"></p>
-      </div><br>
+   <body style="font-family: Roboto; font-size: 120%;">
       <div id="extra">
          <p id="timer"></p>
          <p id="season"></p>
       </div>
+      <hr>
+      <div id="form">
+         <select name="value" id="value">
+            <option disabled selected value> -- select an option -- </option>
+            <optgroup label="Matrix Data">
+               <option value="">Matrix</option>
+               <option value="">Empty Cells</option>
+               <option value="">Grass Cells</option>
+               <option value="">GrassEater Cells</option>
+            </optgroup>
+            <optgroup label="Season Data">
+               <option value="">Timer</option>
+               <option value="">Season Timer</option>
+               <option value="">Current Season</option>
+               <option value="">Next Season</option>
+            </optgroup>
+            <optgroup label="Speed Data">
+               <option value="">Grass Speed</option>
+            </optgroup>
+         </select>
+         <button id="postBtn">Post</button>
+         <button id="stopBtn">Stop Simulation</button>
+      </div><hr>
       <div id="win" style="text-align: center; color: red; font-size: 200%; font-weight: bold;">
          <h1 id="winTitle"></h1>
          <h3 id="scoreTitle"></h3>
@@ -27,4 +41,19 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
    <script src="classes.js"></script>
    <script src="script.js"></script>
+   <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+   <script>
+      var socket = io();
+      
+      var postBtn = document.getElementById('postBtn');
+      var selectInput = document.getElementById('value');
+
+      postBtn.addEventListener('click', function(e) {
+         if(selectInput.value != ''){
+            socket.emit("message", selectInput.value);
+         } else {
+            socket.emit("message", "User requested an empty post")
+         }
+      })
+   </script>
 </html>

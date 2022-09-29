@@ -140,10 +140,6 @@ function draw(){
             }
         }
     }
-    document.getElementById('empty').innerText = "Empty Cells: " + emptyItems
-    document.getElementById('grass').innerText = "Grass Cells: " + grassItems
-    document.getElementById('grassEater').innerText = "GrassEater Cells: " + grassEaterItems
-
     document.getElementById('timer').innerText = "Timer: "+ timer
 }
 
@@ -169,5 +165,29 @@ function getAllCells(val) {
         }
     }
     return indexes
+}
+
+var data = []
+var options = document.querySelectorAll('#form option')
+var selectBtn = document.getElementById('value')
+selectBtn.addEventListener('change', updateData)
+function updateData(){
+    data = [
+        '',
+        matrix,
+        emptyItems,
+        grassItems,
+        grassEaterItems,
+        timer,
+        season.seasonTimer,
+        season.currentSeason,
+        season.nextSeason,
+        grassSpeed
+    ]
+
+    for(i=0;i<options.length;i++){
+        options[i].id = i
+        options[i].value = data[i]
+    }
 }
 

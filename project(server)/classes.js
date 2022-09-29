@@ -124,6 +124,7 @@ class Season {
         this.seasonTimer = 0
         this.seasonCount = 0
         this.currentSeason = this.season[this.seasonCount]
+        this.nextSeason = this.season[this.seasonCount + 1]
     }
 
     recheckSeason(){
@@ -138,6 +139,7 @@ class Season {
             this.seasonTimer++
         }
         this.currentSeason = this.season[this.seasonCount]
+        this.nextSeason = this.season[this.seasonCount + 1]
         document.getElementById('season').innerText = "Season: " + this.currentSeason + " / Season Time: " + this.seasonTimer
     }
 
